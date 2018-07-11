@@ -1,0 +1,17 @@
+Package: FCSGenerator
+Type: Package
+Title: FCS Files Generator
+Version: 0.7.0
+Author: Isam Ben Soltane
+Maintainer: <isam.ben-soltane@inserm.fr>
+Description: Script allowing the user to generate several fcs files with a given amount of markers (parameters / dimensions), events, populations and sub-populations.
+    The populations can be generated either manually or automatically with a set of frequencies commands.
+    Control and mutant files can be generated. Variable parameters must be given to differentiate the control files. 
+    Mutant files are generated from control files. For each population, a reduction coefficient can be given to change its proportion in the selected mutant file.
+License: ?
+Encoding: UTF-8
+LazyData: true
+Depends: R (>= 3.1.0), shiny, shinyjs, ggcyto, flowCore, gtools,
+        Biobase
+NeedsCompilation: no
+Packaged: 2018-07-11 11:31:24 UTC; ibensoltane

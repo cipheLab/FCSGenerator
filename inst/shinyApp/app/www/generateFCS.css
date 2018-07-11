@@ -1,0 +1,352 @@
+body
+{
+	height: 100vh;
+	width: 100vw;
+}
+
+
+/*========================================================
+                   NAVBAR AND TITLE
+========================================================*/
+
+#AppTitle
+{
+	background-color: #464d6d;
+	height: 10vh;
+	color: white;
+}
+
+#AppTitle h2
+{
+	padding: 2%;
+}
+
+.navbar
+{
+	margin-top: 1vh;
+	margin-bottom: 0;
+	width: 100%;
+}
+
+.navbar-header
+{
+	width: 0;
+}
+
+.navbar .container-fluid
+{
+	padding-left: 0;
+	margin-left: 0;
+}
+
+
+
+
+/*========================================================
+                   SIDE PANEL - FILES
+========================================================*/
+
+#left_menu
+{
+	background-color: #6a74a0;
+	overflow: auto;
+	height: 85vh;
+	margin: 0;
+	padding : 0;
+}
+
+#mainPanel
+{
+	margin: 0;
+	padding : 0;
+	height: 85vh;
+	width: 74%;
+	margin-left: 0.1%;
+}
+
+#save_all
+{
+	margin-bottom: 5vh;
+	margin-left: 2vw;
+	margin-top: 2vh;
+	width: 80%;
+}
+
+.setBox
+{
+	margin-bottom: 1vh;
+	padding: 2%;
+	color: white;
+	background-color: #737373;
+}
+
+.setBoxControlContainer
+{
+	padding: 1%;
+	background-color: #ffbc8f;
+	min-height: 6vh;
+}
+
+.setBoxControl
+{
+	padding: 1%;
+	margin-left: 1.2vw;
+	background-color: orange;
+	margin-top: 5vh;
+	padding-right: 1vw;
+	height: 25vh;
+	overflow: auto;
+}
+
+.setBoxControl h5
+{
+	font-size: 120%;
+}
+
+.setBoxMutantContainer
+{
+	padding: 1%;
+	background-color: #ffbc8f;
+	margin-top: 4vh;
+	min-height: 6vh;
+}
+
+.setBoxMutant
+{
+	padding: 1%;
+	margin-left: 1.2vw;
+	background-color: orange;
+	margin-top: 5vh;
+	padding-right: 1vw;
+	height: 25vh;
+	overflow: auto;
+}
+
+.setBoxMutant h5
+{
+	font-size: 120%;
+}
+
+.setBox h4
+{
+	font-size: 140%;
+	margin-bottom: 5vh;
+}
+
+.setBoxButton
+{
+	width: 5vw;
+	height: 5vh;
+	margin: 0;
+	padding: 0;
+	float: right;
+}
+
+.setCtrlBoxButton
+{
+	width: 5vw;
+	height: 5vh;
+	float: right;
+	margin: 0;
+	padding: 0;
+}
+
+.setMutBoxButton
+{
+	width: 5vw;
+	height: 5vh;
+	float: right;
+	margin: 0;
+	padding: 0;
+}
+
+
+.fileBoxButton
+{
+	width: 5vw;
+	height: 5vh;
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.controlFileBox
+{
+	margin-bottom: 4%;
+	margin-top: 4%;
+	margin-left: 2vw;
+	background-color: white;
+	padding: 1.5%;
+}
+
+.mutantFileBox
+{
+	margin-bottom: 4%;
+	margin-top: 4%;
+	margin-left: 2vw;
+	background-color: white;
+	padding: 1.5%;
+}
+
+
+
+/*========================================================
+                   MANUAL GENERATING
+========================================================*/
+
+#popModif
+{
+	width: 100%;
+}
+
+#Commands
+{
+	margin-bottom: 10vh;
+	width: 100%;
+}
+
+#man_commandsDiv
+{
+	float: left;
+	width: 10vw;
+}
+
+#man_commandsDivFiles
+{
+	float: left;
+	margin-bottom: 2vh;
+	margin-left: 2vw;
+	width: 15vw;
+}
+
+#man_commandsDivFiles .parametersCheckbox_div
+{
+	padding: 1vw;
+	height: 40vh;
+	overflow: auto;
+	background-color: gray;
+	color: white;
+}
+
+.popFreqDiv
+{
+	float:left;
+	background-color: gray;
+	border: solid;
+	width: 43vw;
+	color: white;
+	margin-left: 2vw;
+	height: 54vh;
+	overflow: auto;
+}
+
+
+
+/*========================================================
+                   AUTO GENERATING
+========================================================*/
+
+#generatePanel
+{
+	float: left;
+	height: 76vh;
+	margin : 0;	
+	padding : 0;
+	width: 90%;
+	padding-right: 1%;
+}
+
+
+#generatePanelValues
+{
+	float: left;
+	margin-right: 5vw;
+	margin-left: 1.4vw;
+	margin-bottom: 2vh;
+}
+
+#generatePanelFiles
+{
+	float: left;
+	margin-bottom: 2vh;
+	width: 20%;
+}
+
+#generatePanelFiles .parametersCheckbox_div
+{
+	padding: 1vw;
+	height: 40vh;
+	overflow: auto;
+	background-color: gray;
+	color: white;
+}
+
+
+#minPopPanel
+{
+	color: white;
+	width: 99%;
+	padding: 0.4%;
+	background-color: gray;
+}
+
+#minPopPanel h4
+{
+	text-align: center;
+}
+
+#generateDiv2
+{
+	margin: 0;
+	padding: 0;
+	width: 58%;
+	margin-left: 2%;
+}
+
+
+
+
+
+/*========================================================
+                   MUTANT MENU
+========================================================*/
+
+
+
+
+#set_used_id_div
+{
+	float: left;
+}
+
+#pop_red_div
+{
+	margin-left: 3vw;
+	width: 80%;
+	margin-bottom: 4vh;
+}
+
+#pop_red_div .pop_red_file_div
+{
+	margin: 2%;
+	background-color: orange;
+}
+
+.set_used_load_button
+{
+	margin-top: 2%;
+}
+
+.setPopList_div
+{
+	width: 80%;
+	margin-top: 2vh;
+	background-color: gray;
+	color: white;
+	padding: 1.5%;
+	height: 52vh;
+	overflow: auto;
+}
+
+
+
