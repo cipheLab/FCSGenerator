@@ -7,7 +7,7 @@ Script allowing the user to generate several fcs files with a given amount of ma
 	
 ## Requirements
   * software: R(Version 3.4.3 to 3.5), Rstudio(optional)
-  * R packages: shiny, shinyjs, ggcyto, flowCore, gtools, Biobase , "Rcpp", "RcppArmadillo"
+  * R packages: shiny, shinyjs, ggcyto, flowCore, gtools, Biobase , Rcpp, RcppArmadillo
   
 ## Quick installation guide
 
