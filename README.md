@@ -7,18 +7,13 @@ Script allowing the user to generate several fcs files with a given amount of ma
 	
 ## Requirements
   * software: R(Version 3.4.3 to 3.5), Rstudio(optional)
-  * R packages: shiny, shinyjs, ggcyto, flowCore, gtools, Biobase 
+  * R packages: shiny, shinyjs, ggcyto, flowCore, gtools, Biobase , "Rcpp", "RcppArmadillo"
   
 ## Quick installation guide
 
   1. Run the following command in R/RStudio:
 ```
-<<<<<<< HEAD
-install.packages(c("shiny", "shinyjs", "gtools", "ggplot2"))
-=======
-install.packages(c("shiny", "shinyjs", "gtools""))
->>>>>>> parent of 6e9be70... OUI OUI
-
+install.packages(c("shiny", "shinyjs", "gtools", "ggplot2", "Rcpp", "RcppArmadillo"))
 ```
   >You may be asked to reload your environment, if so, accept.
   
@@ -33,18 +28,10 @@ biocLite("ggcyto")
   
 ## Launching the shiny application
 
-  1. Double click on the ciphold.Rproj file to open it. It will run a new R session with the working directory set to launch the shiny application.
-  2. Run the following commands in R/RStudio:
+  1. Run the following commands in R/RStudio:
 ```
 <<<<<<< HEAD
 library("FCSGenerator")
-runApp("FCSGenerator.run()")
-=======
-library("shiny")
-runApp("App/")
->>>>>>> parent of 6e9be70... OUI OUI
+FCSGenerator.run()
 ```
   3. The application should be running, if not, do all the steps from the "Setting up your environment" section in the good order. If it does not resolves the issue, please go to the "Known Issues" section.
-  
-### Notes: 
-> You could also use **shiny::runApp("App/")**.
