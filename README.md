@@ -36,4 +36,3 @@ install_github("isambens/fcsgenerator")
 library("FCSGenerator")
 FCSGenerator.run()
 ```
-  3. The application should be running, if not, do all the steps from the "Setting up your environment" section in the good order. If it does not resolves the issue, please go to the "Known Issues" section.
