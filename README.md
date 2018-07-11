@@ -13,16 +13,18 @@ Script allowing the user to generate several fcs files with a given amount of ma
 
   1. Run the following command in R/RStudio:
 ```
-install.packages(c("shiny", "shinyjs", "gtools", "ggplot2", "Rcpp", "RcppArmadillo"))
+install.packages(c("shiny", "shinyjs", "gtools", "ggplot2", "Rcpp", "RcppArmadillo", "devtools"))
+source("https://bioconductor.org/biocLite.R")
+biocLite("Biobase")
+biocLite("flowCore")
+biocLite("ggcyto")
 ```
   >You may be asked to reload your environment, if so, accept.
   
   2. Run the next commands:
 ```
-source("https://bioconductor.org/biocLite.R")
-biocLite("Biobase")
-biocLite("flowCore")
-biocLite("ggcyto")
+library("devtools"")
+install_github("isambens/fcsgenerator")
 ```
 
   
