@@ -12,7 +12,7 @@
 #' @export
 FCSGenerator.run <- function()
 {
-    library("shiny")
+    library("shiny") 
     library("shinyjs")
     library("ggcyto")
     library("flowCore")

@@ -13,7 +13,7 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
     generated.matrix <- matrix(nrow=nmb.events,ncol=nmb.dim+1)
 
 
-
+ 
     #Creation des noms de parametres + ajout parametre cluster--------------------------------
     colnames(generated.matrix) <- c(rep("NA",times = nmb.dim),"cluster")
     for (current_dim in 1:nmb.dim)

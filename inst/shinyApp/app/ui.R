@@ -6,7 +6,7 @@ ui <- fluidPage(theme = "generateFCS.css",
   div(id="AppTitle",
   titlePanel("FCS Generator")),
   
-  sidebarLayout(
+  sidebarLayout( 
     
     sidebarPanel(div(id="setBoxes"),
                  id="left_menu",

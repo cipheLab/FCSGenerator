@@ -3,7 +3,7 @@
 \title{FCS Generator}
 \usage{
 FCSGenerator.run()
-}
+} 
 \description{
 Run the shinyApp FCS Generator.
 }
