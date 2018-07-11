@@ -13,7 +13,7 @@ Script allowing the user to generate several fcs files with a given amount of ma
 
   1. Run the following command in R/RStudio:
 ```
-install.packages(c("shiny", "shinyjs", "gtools"))
+install.packages(c("shiny", "shinyjs", "gtools", "ggplot2"))
 
 ```
   >You may be asked to reload your environment, if so, accept.
@@ -32,7 +32,7 @@ biocLite("ggcyto")
   1. Double click on the ciphold.Rproj file to open it. It will run a new R session with the working directory set to launch the shiny application.
   2. Run the following commands in R/RStudio:
 ```
-library("FCS-Generator")
+library("FCSGenerator")
 runApp("FCSGenerator.run()")
 ```
   3. The application should be running, if not, do all the steps from the "Setting up your environment" section in the good order. If it does not resolves the issue, please go to the "Known Issues" section.
