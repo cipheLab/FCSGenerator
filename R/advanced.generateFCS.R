@@ -13,7 +13,7 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
     generated.matrix <- matrix(nrow=nmb.events,ncol=nmb.dim+1)
 
 
- 
+
     #Creation des noms de parametres + ajout parametre cluster--------------------------------
     colnames(generated.matrix) <- c(rep("NA",times = nmb.dim),"cluster")
     for (current_dim in 1:nmb.dim)
@@ -380,8 +380,8 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
 
         #Ecriture des metadata
 
-        fcs <- FlowFrame(temp.matrix)
-        
+        fcs <- flowFrame(temp.matrix)
+
         lapply(c(1:dim(temp.matrix)[2]),function(x)
         {
             fcs@description[[paste0("$P",x,"R")]] <<- as.integer(diff(range(temp.matrix[,i])))+1
@@ -497,7 +497,7 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
 
     #Ecriture des metadata-------------------------
 
-    fcs <- FlowFrame(temp.matrix)
+    fcs <- flowFrame(temp.matrix)
     lapply(c(1:dim(temp.matrix)[2]),function(x)
     {
         fcs@description[[paste0("$P",x,"R")]] <<- as.integer(diff(range(temp.matrix[,i])))+1
