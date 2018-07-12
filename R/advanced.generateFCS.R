@@ -385,10 +385,13 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
 		{
 			descR[[paste0("$P",x,"R")]] <<- 262144
 		})
-		descR[["TIMESTEP"]] <- max((nmb.events / 10000),0.01)
+		
+		nmb.grp <- min(nmb.ev,1000)
+		descR[["TIMESTEP"]] <- 1/nmb.grp
 		lapply(1:nmb.events, function(e)
 		{
-			temp.matrix[e,(nmb.dim+1)] <<- descR[["TIMESTEP"]] *  as.integer(e / 10000)
+			temp.matrix[e,(nmb.dim+1)] <<- descR[["TIMESTEP"]] *  as.integer(e / (nmb.events/nmb.grp))
+			
 		})
 		fcs <- flowFrame(temp.matrix, description = descR)
 
