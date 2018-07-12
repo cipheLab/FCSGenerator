@@ -20,7 +20,6 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
     {
         colnames(generated.matrix)[current_dim] <- paste("PARAM_",current_dim, sep="")
     }
-	print("a")
 
 
     #Correction du nombre de clusters s'il n'y a pas assez de parametres pour les differencier (patterns confondus)----------------------
@@ -316,7 +315,7 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
             generated.matrix[clust_events[[current_cluster]][k], ]  <- c(sapply(1:(nmb.dim+2), function(i)
             {
                 r <- 0
-                if(i != nmb.dim+1)
+                if(i <= nmb.dim)
                 {
                     r <- events_values[[i]][k]
                 }
@@ -379,16 +378,20 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
 
 
         #Ecriture des metadata
-
+		
+		fcs <- flowFrame(temp.matrix)
 		descR <- description(fcs)
 		lapply(c(1:dim(temp.matrix)[2]),function(x)
 		{
 			descR[[paste0("$P",x,"R")]] <<- 262144
 		})
-		descR[["TIMESTEP"]] <- max((nmb.events / 10000),0.01)
+		
+		nmb.grp <- min(nmb.events,1000)
+		descR[["TIMESTEP"]] <- 1/nmb.grp
 		lapply(1:nmb.events, function(e)
 		{
-			temp.matrix[e,(nmb.dim+1)] <<- descR[["TIMESTEP"]] *  as.integer(e / 10000)
+			temp.matrix[e,(nmb.dim+1)] <<- descR[["TIMESTEP"]] *  as.integer(e / (nmb.events/nmb.grp))
+			
 		})
 		fcs <- flowFrame(temp.matrix, description = descR)
 
@@ -501,7 +504,8 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
     }
 
     #Ecriture des metadata-------------------------
-
+	
+	fcs <- flowFrame(temp.matrix)
     descR <- description(fcs)
     lapply(c(1:dim(temp.matrix)[2]),function(x)
     {
