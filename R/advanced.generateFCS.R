@@ -313,14 +313,14 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
 
         for (k in 1:length(clust_events[[current_cluster]]))
         {
-            generated.matrix[clust_events[[current_cluster]][k], ]  <- c(sapply(1:(nmb.dim+1), function(i)
+            generated.matrix[clust_events[[current_cluster]][k], ]  <- c(sapply(1:(nmb.dim+2), function(i)
             {
                 r <- 0
-                if(i < nmb.dim+1)
+                if(i != nmb.dim+1)
                 {
                     r <- events_values[[i]][k]
                 }
-                else
+                else 
                 {
                     r <- as.integer(current_cluster)
                 }
