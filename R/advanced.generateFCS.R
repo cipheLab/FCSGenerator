@@ -352,7 +352,7 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
                                 temp.matrix[e,d] <- rnorm(1, mean = xmean[[cl]][[d]], sd = sd[[cl]][[d]])
                             }
                         }
-                        else if (d = nmb.dim+2)
+                        else if (d == nmb.dim+2)
                         {
                             for (e in list.clust_events[[i]][[cl]][ (length(clust_events[[cl]]) + 1) : length(list.clust_events[[i]][[cl]]) ])
                             {
