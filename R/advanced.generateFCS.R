@@ -20,7 +20,6 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
     {
         colnames(generated.matrix)[current_dim] <- paste("PARAM_",current_dim, sep="")
     }
-	print("a")
 
 
     #Correction du nombre de clusters s'il n'y a pas assez de parametres pour les differencier (patterns confondus)----------------------
@@ -316,7 +315,7 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
             generated.matrix[clust_events[[current_cluster]][k], ]  <- c(sapply(1:(nmb.dim+2), function(i)
             {
                 r <- 0
-                if(i != nmb.dim+1)
+                if(i <= nmb.dim)
                 {
                     r <- events_values[[i]][k]
                 }
