@@ -25,5 +25,5 @@ FCSGenerator.run <- function()
         stop("Could not find app directory. Try re-installing `FCSGenerator`.", call. = FALSE)
     }
 
-    shiny::runApp(appDir, display.mode = "normal")
+    shiny::runApp(appDir, display.mode = "normal", launch.browser = T)
 }
