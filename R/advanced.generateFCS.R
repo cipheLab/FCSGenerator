@@ -10,12 +10,12 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
                                nmb.clust.to.change = 0, reduction.percentage.per.file = list())
 {
     #Generation d'une matrice de reference pour tous les fichiers---------------------------------------------------
-    generated.matrix <- matrix(nrow=nmb.events,ncol=nmb.dim+1)
+    generated.matrix <- matrix(nrow=nmb.events,ncol=nmb.dim+2)
 
 
 
     #Creation des noms de parametres + ajout parametre cluster--------------------------------
-    colnames(generated.matrix) <- c(rep("NA",times = nmb.dim),"cluster")
+    colnames(generated.matrix) <- c(rep("NA",times = nmb.dim),"time","cluster")
     for (current_dim in 1:nmb.dim)
     {
         colnames(generated.matrix)[current_dim] <- paste("PARAM_",current_dim, sep="")
@@ -343,7 +343,7 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
             {
                 if (length(list.clust_events[[i]][[cl]]) > length(clust_events[[cl]]))
                 {
-                    for (d in 1:(nmb.dim+1))
+                    for (d in 1:(nmb.dim+2))
                     {
                         if(d <= nmb.dim)
                         {
@@ -352,7 +352,7 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
                                 temp.matrix[e,d] <- rnorm(1, mean = xmean[[cl]][[d]], sd = sd[[cl]][[d]])
                             }
                         }
-                        else
+                        else if (d = nmb.dim+2)
                         {
                             for (e in list.clust_events[[i]][[cl]][ (length(clust_events[[cl]]) + 1) : length(list.clust_events[[i]][[cl]]) ])
                             {
@@ -380,12 +380,17 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
 
         #Ecriture des metadata
 
-        fcs <- flowFrame(temp.matrix)
-
-        lapply(c(1:dim(temp.matrix)[2]),function(x)
-        {
-            fcs@description[[paste0("$P",x,"R")]] <<- as.integer(diff(range(temp.matrix[,i])))+1
-        })
+		descR <- description(fcs)
+		lapply(c(1:dim(temp.matrix)[2]),function(x)
+		{
+			descR[[paste0("$P",x,"R")]] <<- 262144
+		})
+		descR[["TIMESTEP"]] <- max((nmb.events / 10000),0.01)
+		lapply(1:nmb.events, function(e)
+		{
+			temp.matrix[e,(nmb.dim+1)] <<- descR[["TIMESTEP"]] *  as.integer(e / 10000)
+		})
+		fcs <- flowFrame(temp.matrix, description = descR)
 
         if(!is.null(savePath))
         {
@@ -402,8 +407,8 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
 advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(), reduction.percentage = c(), clust_code = list())
 {
     temp.matrix <- ctrl.fcs.file@exprs
-    nmb.dim <- ncol(temp.matrix) -1
-    nmb.clust <- max(temp.matrix[,nmb.dim+1])
+    nmb.dim <- ncol(temp.matrix) -2
+    nmb.clust <- max(temp.matrix[,nmb.dim+2])
     nmb.clust.to.change <- length(clusters.to.reduce)
 
     clust_events <- lapply(1:nmb.clust, function(i)
@@ -462,7 +467,7 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
         {
             if (length(cl.e[[cl]]) > length(clust_events[[cl]]))
             {
-                for (d in 1:(nmb.dim+1))
+                for (d in 1:(nmb.dim+2))
                 {
                     if(d <= nmb.dim)
                     {
@@ -483,7 +488,7 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
                             temp.matrix[e,d] <- val
                         }
                     }
-                    else
+                    else if (d == nmb.dim+2)
                     {
                         for (e in cl.e[[cl]][ (length(clust_events[[cl]]) + 1) : length(cl.e[[cl]]) ])
                         {
@@ -497,11 +502,12 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
 
     #Ecriture des metadata-------------------------
 
-    fcs <- flowFrame(temp.matrix)
+    descR <- description(fcs)
     lapply(c(1:dim(temp.matrix)[2]),function(x)
     {
-        fcs@description[[paste0("$P",x,"R")]] <<- as.integer(diff(range(temp.matrix[,i])))+1
+        descR[[paste0("$P",x,"R")]] <<- 262144
     })
+	fcs <- flowFrame(temp.matrix, description = descR)
 
     return(fcs)
 }
@@ -516,9 +522,9 @@ advanced.transform.values <- function(fcs.in)
     nmb.dim <- ncol(fcs.in@exprs)-1
 
     fcs <- flowCore::transform(fcs, transformList(colnames(fcs.in@exprs)[1:nmb.dim], invLgcl))
-    fcs@parameters@data$maxRange <- sapply(1:(nmb.dim+1), function(i)
+    fcs@parameters@data$maxRange <- sapply(1:(nmb.dim+2), function(i)
     {
-        return(max(fcs.in@exprs[,i]))
+        return(262144)
     })
 
     return (fcs)
