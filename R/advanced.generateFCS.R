@@ -378,7 +378,8 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
 
 
         #Ecriture des metadata
-
+		
+		fcs <- flowFrame(temp.matrix)
 		descR <- description(fcs)
 		lapply(c(1:dim(temp.matrix)[2]),function(x)
 		{
@@ -500,7 +501,8 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
     }
 
     #Ecriture des metadata-------------------------
-
+	
+	fcs <- flowFrame(temp.matrix)
     descR <- description(fcs)
     lapply(c(1:dim(temp.matrix)[2]),function(x)
     {
