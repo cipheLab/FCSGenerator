@@ -386,7 +386,7 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
 			descR[[paste0("$P",x,"R")]] <<- 262144
 		})
 		
-		nmb.grp <- min(nmb.ev,1000)
+		nmb.grp <- min(nmb.events,1000)
 		descR[["TIMESTEP"]] <- 1/nmb.grp
 		lapply(1:nmb.events, function(e)
 		{
