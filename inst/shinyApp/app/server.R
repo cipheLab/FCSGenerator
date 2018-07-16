@@ -558,13 +558,8 @@ server <- function(input, output, session)
             shinyjs::disable("set_used_load")
             updateSelectInput(session, "set_used_id", "Set of control Files To Use", choices = list(" " = 0), selected = j)
         }
-        
-        delay
-        (
-            800,
-            shinyjs::enable("generateFCSAutomatically")
-        )
-        
+
+        shinyjs::enable("generateFCSAutomatically")
 
     })
 
@@ -614,7 +609,7 @@ server <- function(input, output, session)
                     ui =  div(id=paste("min_",popId, sep=""),
                               style="height:15vh;margin-top:50px",
                               numericInput(paste("min_",popId,popId, sep=""),
-                                           h3("Min Frequency"),
+                                           h3("Min Frquency"),
                                            value = 0,
                                            min = 0,
                                            max = 100)))
@@ -1211,11 +1206,8 @@ server <- function(input, output, session)
             shinyjs::disable("set_used_load")
             updateSelectInput(session, "set_used_id", "Set of control Files To Use", choices = list(" " = 0), selected = j)
         }
-        delay
-        (
-            800,
-            shinyjs::enable("generateFCSManually")
-        )
+
+        shinyjs::enable("generateFCSManually")
 
    })
 
@@ -1299,11 +1291,7 @@ server <- function(input, output, session)
                 })
 
             })
-            delay
-            (
-                800,
-                shinyjs::enable("pop_red_generate_button")
-            )
+            shinyjs::enable("pop_red_generate_button")
         }
     })
 
