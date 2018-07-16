@@ -17,6 +17,7 @@ library("flowCore")
 
 server <- function(input, output, session)
 {
+  useShinyjs()
   ##VARIABLES A REINITIALISER##
   setsList <- list()
   clust.codeList <- list()
@@ -608,7 +609,7 @@ server <- function(input, output, session)
                     ui =  div(id=paste("min_",popId, sep=""),
                               style="height:15vh;margin-top:50px",
                               numericInput(paste("min_",popId,popId, sep=""),
-                                           h3("Min density"),
+                                           h3("Min Frquency"),
                                            value = 0,
                                            min = 0,
                                            max = 100)))
@@ -618,7 +619,7 @@ server <- function(input, output, session)
                     ui = div(id=paste("max_",popId, sep=""),
                              style="height:15vh;margin-top:50px",
                              numericInput(paste("max_",popId,popId, sep=""),
-                                          h3("Max density"),
+                                          h3("Max Frequency"),
                                           value = 100,
                                           min = 0,
                                           max = 100)))
