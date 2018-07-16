@@ -3,6 +3,7 @@ Script allowing the user to generate several fcs files with a given amount of ma
     The populations can be generated either manually or automatically with a set of frequencies commands.
     Control and mutant files can be generated. Variable parameters must be given to differentiate the control files. 
     Mutant files are generated from control files. For each population, a reduction coefficient can be given to change its proportion in the selected mutant file.
+	>[You may find information here :](doc/temp.pdf)
  
 	
 ## Requirements
