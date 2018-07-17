@@ -559,9 +559,7 @@ server <- function(input, output, session)
             updateSelectInput(session, "set_used_id", "Set of control Files To Use", choices = list(" " = 0), selected = j)
         }
         
-        delay
-        (
-            800,
+        delay(800,
             shinyjs::enable("generateFCSAutomatically")
         )
         
@@ -1211,9 +1209,7 @@ server <- function(input, output, session)
             shinyjs::disable("set_used_load")
             updateSelectInput(session, "set_used_id", "Set of control Files To Use", choices = list(" " = 0), selected = j)
         }
-        delay
-        (
-            800,
+        delay(800,
             shinyjs::enable("generateFCSManually")
         )
 
@@ -1299,9 +1295,7 @@ server <- function(input, output, session)
                 })
 
             })
-            delay
-            (
-                800,
+            delay(800,
                 shinyjs::enable("pop_red_generate_button")
             )
         }
