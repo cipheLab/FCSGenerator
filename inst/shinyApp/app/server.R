@@ -471,14 +471,14 @@ server <- function(input, output, session)
                     setwd(tmpdir)
                     if(setsList.ID > 0)
                     {
-                        lapply(c(1:setsList.ID), function(k)
+                        for(k in c(1:setsList.ID))
                         {
                             if(length(setsList[[k]]) == 2)
                             {
                                 if(length(setsList[[k]][[1]]) > 0)
                                 {
                                     dir.create("ctrl")
-                                    lapply(c(1:length(setsList[[k]][[1]])), function(l)
+                                    for(l in c(1:length(setsList[[k]][[1]])))
                                     {
                                         print(l)
                                         if(!is.null(unlist(setsList[[k]][[2]][[l]])))
@@ -495,13 +495,13 @@ server <- function(input, output, session)
                                             }
                                             write.FCS(fcs.temp,fnames[length(fnames)], delimiter = "#")
                                         }
-                                    })
+                                    }
                                 }
 
                                 if(length(setsList[[k]][[2]]) > 0)
                                 {
                                     dir.create("mutant")
-                                    lapply(c(1:length(setsList[[k]][[2]])), function(l)
+                                    for(l in c(1:length(setsList[[k]][[2]])))
                                     {
                                         if(!is.null(unlist(setsList[[k]][[2]][[l]])))
                                         {
@@ -516,10 +516,10 @@ server <- function(input, output, session)
                                             }
                                             write.FCS(fcs.temp,fnames[length(fnames)], delimiter = "#")
                                         }
-                                    })
+                                    }
                                 }
                             }
-                        })
+                        }
                     }
                     print(fnames)
                     zip(zipfile=file,files=fnames)
