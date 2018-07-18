@@ -483,7 +483,7 @@ server <- function(input, output, session)
                                         print(l)
                                         if(!is.null(unlist(setsList[[k]][[2]][[l]])))
                                         {
-                                            fnames <<- c(fnames,paste("ctrl/",input[[paste("box_ctrl_",k,"_",l,"_text",sep="")]],".fcs",sep=""))
+                                            fnames <- c(fnames,paste("ctrl/",input[[paste("box_ctrl_",k,"_",l,"_text",sep="")]],".fcs",sep=""))
                                             print(fnames)
                                             fcs.temp <- setsList[[k]][[1]][[l]]
                                             if(!is.null(input[["rangeInput"]]))
@@ -505,7 +505,7 @@ server <- function(input, output, session)
                                     {
                                         if(!is.null(unlist(setsList[[k]][[2]][[l]])))
                                         {
-                                            fnames <<- c(fnames,paste("mutant/",input[[paste("box_mut_",k,"_",l,"_text",sep="")]],".fcs",sep=""))
+                                            fnames <- c(fnames,paste("mutant/",input[[paste("box_mut_",k,"_",l,"_text",sep="")]],".fcs",sep=""))
                                             fcs.temp <- setsList[[k]][[2]][[l]]
                                             if(!is.null(input[["rangeInput"]]))
                                             {
