@@ -471,6 +471,7 @@ server <- function(input, output, session)
                     setwd(tmpdir)
                     if(setsList.ID > 0)
                     {
+                        print(setsList.ID)
                         lapply(c(1:setsList.ID), function(k)
                         {
                             if(length(setsList[[k]]) == 2)
