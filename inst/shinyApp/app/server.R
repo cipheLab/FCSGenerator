@@ -17,6 +17,7 @@ library("flowCore")
 
 server <- function(input, output, session)
 {
+  useShinyjs()
   ##VARIABLES A REINITIALISER##
   setsList <- list()
   clust.codeList <- list()
@@ -470,18 +471,19 @@ server <- function(input, output, session)
                     setwd(tmpdir)
                     if(setsList.ID > 0)
                     {
-                        lapply(c(1:setsList.ID), function(k)
+                        for(k in c(1:setsList.ID))
                         {
                             if(length(setsList[[k]]) == 2)
                             {
                                 if(length(setsList[[k]][[1]]) > 0)
                                 {
                                     dir.create("ctrl")
-                                    lapply(c(1:length(setsList[[k]][[1]])), function(l)
+                                    for(l in c(1:length(setsList[[k]][[1]])))
                                     {
-                                        if(!is.null(unlist(setsList[[k]][[2]][[l]])))
+                                        print(l)
+                                        if(!is.null(unlist(setsList[[k]][[1]][[l]])))
                                         {
-                                            fnames <<- c(fnames,paste("ctrl/",input[[paste("box_ctrl_",k,"_",l,"_text",sep="")]],".fcs",sep=""))
+                                            fnames <- c(fnames,paste("ctrl/",input[[paste("box_ctrl_",k,"_",l,"_text",sep="")]],".fcs",sep=""))
                                             fcs.temp <- setsList[[k]][[1]][[l]]
                                             if(!is.null(input[["rangeInput"]]))
                                             {
@@ -492,17 +494,17 @@ server <- function(input, output, session)
                                             }
                                             write.FCS(fcs.temp,fnames[length(fnames)], delimiter = "#")
                                         }
-                                    })
+                                    }
                                 }
 
                                 if(length(setsList[[k]][[2]]) > 0)
                                 {
                                     dir.create("mutant")
-                                    lapply(c(1:length(setsList[[k]][[2]])), function(l)
+                                    for(l in c(1:length(setsList[[k]][[2]])))
                                     {
                                         if(!is.null(unlist(setsList[[k]][[2]][[l]])))
                                         {
-                                            fnames <<- c(fnames,paste("mutant/",input[[paste("box_mut_",k,"_",l,"_text",sep="")]],".fcs",sep=""))
+                                            fnames <- c(fnames,paste("mutant/",input[[paste("box_mut_",k,"_",l,"_text",sep="")]],".fcs",sep=""))
                                             fcs.temp <- setsList[[k]][[2]][[l]]
                                             if(!is.null(input[["rangeInput"]]))
                                             {
@@ -513,11 +515,12 @@ server <- function(input, output, session)
                                             }
                                             write.FCS(fcs.temp,fnames[length(fnames)], delimiter = "#")
                                         }
-                                    })
+                                    }
                                 }
                             }
-                        })
+                        }
                     }
+                    print(fnames)
                     zip(zipfile=file,files=fnames)
                 },
                 contentType = "application/zip"
@@ -557,8 +560,11 @@ server <- function(input, output, session)
             shinyjs::disable("set_used_load")
             updateSelectInput(session, "set_used_id", "Set of control Files To Use", choices = list(" " = 0), selected = j)
         }
-
-        shinyjs::enable("generateFCSAutomatically")
+        
+        delay(800,
+            shinyjs::enable("generateFCSAutomatically")
+        )
+        
 
     })
 
@@ -608,7 +614,7 @@ server <- function(input, output, session)
                     ui =  div(id=paste("min_",popId, sep=""),
                               style="height:15vh;margin-top:50px",
                               numericInput(paste("min_",popId,popId, sep=""),
-                                           h3("Min density"),
+                                           h3("Min Frequency"),
                                            value = 0,
                                            min = 0,
                                            max = 100)))
@@ -618,7 +624,7 @@ server <- function(input, output, session)
                     ui = div(id=paste("max_",popId, sep=""),
                              style="height:15vh;margin-top:50px",
                              numericInput(paste("max_",popId,popId, sep=""),
-                                          h3("Max density"),
+                                          h3("Max Frequency"),
                                           value = 100,
                                           min = 0,
                                           max = 100)))
@@ -1205,8 +1211,9 @@ server <- function(input, output, session)
             shinyjs::disable("set_used_load")
             updateSelectInput(session, "set_used_id", "Set of control Files To Use", choices = list(" " = 0), selected = j)
         }
-
-        shinyjs::enable("generateFCSManually")
+        delay(800,
+            shinyjs::enable("generateFCSManually")
+        )
 
    })
 
@@ -1290,7 +1297,9 @@ server <- function(input, output, session)
                 })
 
             })
-            shinyjs::enable("pop_red_generate_button")
+            delay(800,
+                shinyjs::enable("pop_red_generate_button")
+            )
         }
     })
 
