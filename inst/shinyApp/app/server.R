@@ -481,7 +481,7 @@ server <- function(input, output, session)
                                     for(l in c(1:length(setsList[[k]][[1]])))
                                     {
                                         print(l)
-                                        if(!is.null(unlist(setsList[[k]][[2]][[l]])))
+                                        if(!is.null(unlist(setsList[[k]][[1]][[l]])))
                                         {
                                             print(input[[paste("box_ctrl_",k,"_",l,"_text",sep="")]],".fcs",sep="")
                                             fnames <- c(fnames,paste("ctrl/",input[[paste("box_ctrl_",k,"_",l,"_text",sep="")]],".fcs",sep=""))
