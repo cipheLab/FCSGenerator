@@ -481,6 +481,7 @@ server <- function(input, output, session)
                                     dir.create("ctrl")
                                     lapply(c(1:length(setsList[[k]][[1]])), function(l)
                                     {
+                                        print(l)
                                         if(!is.null(unlist(setsList[[k]][[2]][[l]])))
                                         {
                                             fnames <<- c(fnames,paste("ctrl/",input[[paste("box_ctrl_",k,"_",l,"_text",sep="")]],".fcs",sep=""))
