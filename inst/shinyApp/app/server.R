@@ -471,7 +471,6 @@ server <- function(input, output, session)
                     setwd(tmpdir)
                     if(setsList.ID > 0)
                     {
-                        print(setsList.ID)
                         lapply(c(1:setsList.ID), function(k)
                         {
                             if(length(setsList[[k]]) == 2)
@@ -485,6 +484,7 @@ server <- function(input, output, session)
                                         if(!is.null(unlist(setsList[[k]][[2]][[l]])))
                                         {
                                             fnames <<- c(fnames,paste("ctrl/",input[[paste("box_ctrl_",k,"_",l,"_text",sep="")]],".fcs",sep=""))
+                                            print(fnames)
                                             fcs.temp <- setsList[[k]][[1]][[l]]
                                             if(!is.null(input[["rangeInput"]]))
                                             {
