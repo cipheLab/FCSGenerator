@@ -520,6 +520,7 @@ server <- function(input, output, session)
                             }
                         })
                     }
+                    print(fnames)
                     zip(zipfile=file,files=fnames)
                 },
                 contentType = "application/zip"
