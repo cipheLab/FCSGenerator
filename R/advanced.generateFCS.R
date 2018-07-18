@@ -348,7 +348,12 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
                         {
                             for (e in list.clust_events[[i]][[cl]][ (length(clust_events[[cl]]) + 1) : length(list.clust_events[[i]][[cl]]) ])
                             {
-                                temp.matrix[e,d] <- rnorm(1, mean = xmean[[cl]][[d]], sd = sd[[cl]][[d]])
+								tx <- rnorm(1, mean = xmean[[cl]][[d]], sd = sd[[cl]][[d]])
+								while((tx < 0) || (tx > 4.5))
+								{
+									tx <- rnorm(1,mean = xmean[[cl]][[d]],sd = sd[[cl]][[d]])
+								}
+                                temp.matrix[e,d] <- tx
                             }
                         }
                         else if (d == nmb.dim+2)
@@ -369,9 +374,15 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
 
                 xsd <- (clust_code[[cl]][p]==1) * runif(1,x/7.7,x/5.8) +
                     (clust_code[[cl]][p]==2) * runif(1,x/6.6,x/4.2)
+					
                 temp.matrix[list.clust_events[[i]][[cl]],p] <- sapply(list.clust_events[[i]][[cl]], function(i)
                 {
-                    return(rnorm(1, mean = xm, sd = xsd))
+					tx <- rnorm(1, mean = xm, sd = xsd)
+					while((tx < 0) || (tx > 4.5))
+					{
+						tx <- rnorm(1,mean = xm,sd = xsd)
+					}
+                    return(tx)
                 })
             }
         }
