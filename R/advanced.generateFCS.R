@@ -176,7 +176,7 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
         reduction.percentage.per.file <- c(reduction.percentage.per.file, rep(emptyPerc,n))
     }
 
-    if( nmb.files > 1)
+    if( nmb.files > 1) 
     {
         list.clust_events <- c(list(clust_events),sapply(1:(nmb.files-1), function(n.fl)
         {
