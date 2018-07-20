@@ -1378,6 +1378,7 @@ server <- function(input, output, session)
                              }
                          }
                      })
+                     print(red.perc)
                      fcsMut <- advanced.create.mutation.file(setsList[[setSelected]][[1]][[j]],
                                                              clusters.to.reduce = clust.to.red,
                                                              reduction.percentage = red.perc,

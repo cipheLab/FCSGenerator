@@ -450,7 +450,7 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
         {
             size.clust <- length(cl.e[[cl.to.change[k]]])
             print(paste("size_t:",size.clust))
-            n = as.integer(size.clust * reduction.percentage[[k]] / 100)
+            n = as.integer(size.clust * reduction.percentage[k] / 100)
             ev.to.repart <- cl.e[[cl.to.change[k]]][(size.clust-n+1):size.clust]
             print(paste("size : ",n))
             cl.e[[cl.to.change[k]]] <- cl.e[[cl.to.change[k]]][1:(size.clust-n)]
