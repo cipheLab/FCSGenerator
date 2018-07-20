@@ -440,7 +440,6 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
         m <- length(clusters.to.reduce) - length(reduction.percentage)
         reduction.percentage <- c(reduction.percentage, rep(0,m))
     }
-    print(reduction.percentage)
 
     #MODIFICATION DE LA LISTE DES EVENTS
     if(nmb.clust.to.change > 0)
