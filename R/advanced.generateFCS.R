@@ -533,7 +533,7 @@ advanced.transform.values <- function(fcs.in)
     fcs <- fcs.in
     lgcl <- logicleTransform(t=262144)
     invLgcl <- inverseLogicleTransform(trans = lgcl)
-    nmb.dim <- ncol(fcs.in@exprs)-1
+    nmb.dim <- ncol(fcs.in@exprs)-2
 
     fcs <- flowCore::transform(fcs, transformList(colnames(fcs.in@exprs)[1:nmb.dim], invLgcl))
 
