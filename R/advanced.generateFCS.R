@@ -424,7 +424,6 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
     nmb.dim <- ncol(temp.matrix) -2
     nmb.clust <- max(temp.matrix[,nmb.dim+2])
     nmb.clust.to.change <- length(clusters.to.reduce)
-    print(clusters.to.reduce)
 
     clust_events <- lapply(1:nmb.clust, function(i)
     {
@@ -451,7 +450,7 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
         {
             size.clust <- length(cl.e[[cl.to.change[k]]])
             print(paste("size_t:",size.clust))
-            n = as.integer(size.clust * reduction.percentage[k] / 100)
+            n = as.integer(size.clust * reduction.percentage[[k]] / 100)
             ev.to.repart <- cl.e[[cl.to.change[k]]][(size.clust-n+1):size.clust]
             print(paste("size : ",n))
             cl.e[[cl.to.change[k]]] <- cl.e[[cl.to.change[k]]][1:(size.clust-n)]
@@ -470,6 +469,7 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
                 {
                     if(!(i %in% cl.to.change))
                     {
+                        print(paste("keeping",i))
                         cl.e[[i]] <- c(cl.e[[i]], ev.to.repart[ ((j-1)*n.rep + 1) : (j * n.rep)])
                         j <- j+1
                     }
