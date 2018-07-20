@@ -424,6 +424,7 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
     nmb.dim <- ncol(temp.matrix) -2
     nmb.clust <- max(temp.matrix[,nmb.dim+2])
     nmb.clust.to.change <- length(clusters.to.reduce)
+    print(clusters.to.reduce)
 
     clust_events <- lapply(1:nmb.clust, function(i)
     {
@@ -440,6 +441,7 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
         m <- length(clusters.to.reduce) - length(reduction.percentage)
         reduction.percentage <- c(reduction.percentage, rep(0,m))
     }
+    print(cl.e)
 
     #MODIFICATION DE LA LISTE DES EVENTS
     if(nmb.clust.to.change > 0)
