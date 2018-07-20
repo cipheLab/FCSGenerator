@@ -481,6 +481,7 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
         {
             if (length(cl.e[[cl]]) > length(clust_events[[cl]]))
             {
+                print(paste("Changing:",cl))
                 for (d in 1:(nmb.dim+2))
                 {
                     if(d <= nmb.dim)
