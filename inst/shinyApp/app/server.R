@@ -671,9 +671,9 @@ server <- function(input, output, session)
         progress$set(message="WRITING FCS")
 
         varPar <- c()
-        for (i in 1:input$dimInputAut)
+        for (i in 1:input$dimInputMan)
         {
-            if (input[[paste0("dim_change_box_",i)]])
+            if (input[[paste0("dim_change_box_man",i)]])
             {
                 varPar[length(varPar)+1] <- i
             }
@@ -1374,10 +1374,11 @@ server <- function(input, output, session)
                              if (input[[paste0("pop_red_",p,"_fileInput_",j)]] > 0)
                              {
                                  clust.to.red <<- c(clust.to.red,p)
-                                 red.perc <<- c(red.perc,input[[paste0("pop_red_",p,"_file_",j)]])
+                                 red.perc <<- c(red.perc,input[[paste0("pop_red_",p,"_fileInput_",j)]])
                              }
                          }
                      })
+                     print(red.perc)
                      fcsMut <- advanced.create.mutation.file(setsList[[setSelected]][[1]][[j]],
                                                              clusters.to.reduce = clust.to.red,
                                                              reduction.percentage = red.perc,

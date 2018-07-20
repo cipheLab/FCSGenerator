@@ -172,11 +172,10 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
     {
         n = nmb.clust.to.change - length(reduction.percentage.per.file)
         emptyPerc <- rep(0,nmb.files)
-        print(reduction.percentage.per.file)
         reduction.percentage.per.file <- c(reduction.percentage.per.file, rep(emptyPerc,n))
     }
 
-    if( nmb.files > 1)
+    if( nmb.files > 1) 
     {
         list.clust_events <- c(list(clust_events),sapply(1:(nmb.files-1), function(n.fl)
         {
@@ -427,12 +426,12 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
 
     clust_events <- lapply(1:nmb.clust, function(i)
     {
-        return(c(match(i,temp.matrix[,nmb.dim+1])))
+        return(c(match(i,temp.matrix[,nmb.dim+2])))
     })
 
     cl.e <- lapply(1:nmb.clust, function(i)
     {
-        return(which(temp.matrix[,nmb.dim+1] %in% c(i)))
+        return(which(temp.matrix[,nmb.dim+2] %in% c(i)))
     })
 
     if(length(reduction.percentage) < length(clusters.to.reduce))
@@ -448,6 +447,7 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
         for (k in 1:nmb.clust.to.change)
         {
             size.clust <- length(cl.e[[cl.to.change[k]]])
+            print(paste("size_t:",size.clust))
             n = as.integer(size.clust * reduction.percentage[k] / 100)
             ev.to.repart <- cl.e[[cl.to.change[k]]][(size.clust-n+1):size.clust]
             print(paste("size : ",n))
@@ -467,6 +467,7 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
                 {
                     if(!(i %in% cl.to.change))
                     {
+                        print(paste("keeping",i))
                         cl.e[[i]] <- c(cl.e[[i]], ev.to.repart[ ((j-1)*n.rep + 1) : (j * n.rep)])
                         j <- j+1
                     }
@@ -481,6 +482,7 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
         {
             if (length(cl.e[[cl]]) > length(clust_events[[cl]]))
             {
+                print(paste("Changing:",cl))
                 for (d in 1:(nmb.dim+2))
                 {
                     if(d <= nmb.dim)
@@ -530,17 +532,12 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
 
 advanced.transform.values <- function(fcs.in)
 {
-    write.FCS(fcs.in,"tempazerty.fcs")
-    fcs <- read.FCS("tempazerty.fcs")
+    fcs <- fcs.in
     lgcl <- logicleTransform(t=262144)
     invLgcl <- inverseLogicleTransform(trans = lgcl)
-    nmb.dim <- ncol(fcs.in@exprs)-1
+    nmb.dim <- ncol(fcs.in@exprs)-2
 
     fcs <- flowCore::transform(fcs, transformList(colnames(fcs.in@exprs)[1:nmb.dim], invLgcl))
-    fcs@parameters@data$maxRange <- sapply(1:(nmb.dim+2), function(i)
-    {
-        return(262144)
-    })
 
     return (fcs)
 }
