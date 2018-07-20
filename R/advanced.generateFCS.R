@@ -172,7 +172,6 @@ advanced.generateFCS <- function(nmb.events = 10000, nmb.clust = 0, freq.pop = N
     {
         n = nmb.clust.to.change - length(reduction.percentage.per.file)
         emptyPerc <- rep(0,nmb.files)
-        print(reduction.percentage.per.file)
         reduction.percentage.per.file <- c(reduction.percentage.per.file, rep(emptyPerc,n))
     }
 

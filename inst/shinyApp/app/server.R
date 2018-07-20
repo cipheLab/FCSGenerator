@@ -1374,7 +1374,7 @@ server <- function(input, output, session)
                              if (input[[paste0("pop_red_",p,"_fileInput_",j)]] > 0)
                              {
                                  clust.to.red <<- c(clust.to.red,p)
-                                 red.perc <<- c(red.perc,input[[paste0("pop_red_",p,"_file_",j)]])
+                                 red.perc <<- c(red.perc,input[[paste0("pop_red_",p,"_fileInput_",j)]])
                              }
                          }
                      })
