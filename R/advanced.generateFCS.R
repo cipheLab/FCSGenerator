@@ -530,17 +530,12 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
 
 advanced.transform.values <- function(fcs.in)
 {
-    write.FCS(fcs.in,"tempazerty.fcs")
-    fcs <- read.FCS("tempazerty.fcs")
+    fcs <- fcs.in
     lgcl <- logicleTransform(t=262144)
     invLgcl <- inverseLogicleTransform(trans = lgcl)
     nmb.dim <- ncol(fcs.in@exprs)-1
 
     fcs <- flowCore::transform(fcs, transformList(colnames(fcs.in@exprs)[1:nmb.dim], invLgcl))
-    fcs@parameters@data$maxRange <- sapply(1:(nmb.dim+2), function(i)
-    {
-        return(262144)
-    })
 
     return (fcs)
 }
