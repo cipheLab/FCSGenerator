@@ -671,9 +671,9 @@ server <- function(input, output, session)
         progress$set(message="WRITING FCS")
 
         varPar <- c()
-        for (i in 1:input$dimInputAut)
+        for (i in 1:input$dimInputMan)
         {
-            if (input[[paste0("dim_change_box_",i)]])
+            if (input[[paste0("dim_change_box_man",i)]])
             {
                 varPar[length(varPar)+1] <- i
             }
