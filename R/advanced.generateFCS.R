@@ -427,12 +427,12 @@ advanced.create.mutation.file <- function(ctrl.fcs.file, clusters.to.reduce = c(
 
     clust_events <- lapply(1:nmb.clust, function(i)
     {
-        return(c(match(i,temp.matrix[,nmb.dim+1])))
+        return(c(match(i,temp.matrix[,nmb.dim+2])))
     })
 
     cl.e <- lapply(1:nmb.clust, function(i)
     {
-        return(which(temp.matrix[,nmb.dim+1] %in% c(i)))
+        return(which(temp.matrix[,nmb.dim+2] %in% c(i)))
     })
 
     if(length(reduction.percentage) < length(clusters.to.reduce))
